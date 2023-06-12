@@ -1,0 +1,36 @@
+const username = document.getElementById("username").value;
+const password = document.getElementById("password").value;
+const error_span = document.getElementById("error");
+const loginForm = document.getElementById("login-form");
+loginForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const requestBody = {
+        username: username,
+        password: password
+      };
+    fetch("http://"+myVariable+":8080/api/auth/patient/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(requestBody)
+  }).then((response) => {
+    if (!response.ok) {
+      if(response.status==401){
+        error_span.innerHTML = "User name or password incorrect"
+      }
+      throw new Error(`Lỗi khi gọi API: ${response.status}`);
+      
+    }
+    return response.json();
+  })
+    .then(data => {
+      // Lưu token vào local storage để sử dụng trong các yêu cầu API khác
+      localStorage.setItem("token", data.token);
+      console.log(data.token);
+        window.location="/";
+    })
+    .catch(error => {
+      console.error("Đăng nhập không thành công: ", error);
+    });
+});
