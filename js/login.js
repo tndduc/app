@@ -1,8 +1,9 @@
-const username = document.getElementById("username").value;
-const password = document.getElementById("password").value;
+
 const error_span = document.getElementById("error");
 const loginForm = document.getElementById("login-form");
 loginForm.addEventListener("submit", function(event) {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
     event.preventDefault();
     const requestBody = {
         username: username,
@@ -31,6 +32,6 @@ loginForm.addEventListener("submit", function(event) {
         window.location="/";
     })
     .catch(error => {
-      console.error("Đăng nhập không thành công: ", error);
+      console.error("Đăng nhập không thành công: ", error,requestBody);
     });
 });
