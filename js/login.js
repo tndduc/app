@@ -9,7 +9,7 @@ loginForm.addEventListener("submit", function(event) {
         username: username,
         password: password
       };
-    fetch("http://"+myVariable+":8080/api/auth/patient/login", {
+    fetch(myVariable+"/api/auth/patient/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
