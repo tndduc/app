@@ -3,7 +3,7 @@ console.log(token);
 let full_name;
 let id_user;
 let username = ""; // Thay đổi giá trị username tùy ý
-const urlAuth = `http://`+myVariable+`:8080/api/user`;
+const urlAuth = myVariable+`/api/user`;
 const requestOptions = {
   method: "GET",
   headers: {
@@ -16,7 +16,7 @@ fetch(urlAuth, requestOptions)
   .then((data) => {
     console.log(data);
     username = data;
-    const url = `http://`+myVariable+`:8080/api/patient/get-profile?username=${username}`;
+    const url = myVariable+`/api/patient/get-profile?username=${username}`;
     const requestOptionsGetUser = {
       method: "GET",
       headers: {
