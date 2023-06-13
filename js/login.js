@@ -29,7 +29,7 @@ loginForm.addEventListener("submit", function(event) {
       // Lưu token vào local storage để sử dụng trong các yêu cầu API khác
       localStorage.setItem("token", data.token);
       console.log(data.token);
-        window.location="/";
+     window.location=gitlink+'/index.html';
     })
     .catch(error => {
       console.error("Đăng nhập không thành công: ", error,requestBody);
