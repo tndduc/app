@@ -19,7 +19,7 @@ dateEndInput.value = formattedDateEnd;
 function GettAppointment() {
     let dateTimeStart = dateStartInput.value+"%2000%3A00%3A00";
     let dateTimeEnd = dateEndInput.value+"%2000%3A00%3A00";
-    let url = `http://`+myVariable+`:8080/api/appointment/get-all?end_dt_time=${dateTimeEnd}&start_dt_time=${dateTimeStart}`;
+    let url = myVariable+`/api/appointment/get-all?end_dt_time=${dateTimeEnd}&start_dt_time=${dateTimeStart}`;
     const requestOptionsGetApp = {
       method: "GET",
       headers: {
@@ -37,7 +37,7 @@ function GettAppointment() {
                 html += `
                 <div class="card">
                     <div class="content-card">
-                        <img class="myImage" src="http://`+myVariable+":8080/api/images/"+item.physician.image+`" alt="">
+                        <img class="myImage" src="`+myVariable+"/api/images/"+item.physician.image+`" alt="">
                         <div class="body-card">
                             <div class="info-doctor">
                                 <span class="name-doctor">${item.physician.last_name} ${item.physician.first_name}</span>
@@ -80,7 +80,7 @@ function GettAppointment() {
                 status: username,
                 title: "Patient"
             };
-            const url = "http://"+myVariable+":8080/api/appointment/booking";
+            const url = myVariable+"/api/appointment/booking";
             console.log(data);
             const requestOptions = {
                 method: "POST",
